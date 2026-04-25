@@ -42,7 +42,7 @@ namespace Spoofer
             TextBoxHWID.Text = Guid.NewGuid().ToString();
             TextBoxProductID.Text = $"{new Random().Next(10000, 99999)}-OEM-{new Random().Next(1000000, 9999999)}-{new Random().Next(10000, 99999)}";
             TextBoxComputerName.Text = $"DESKTOP-{Guid.NewGuid().ToString().Substring(0, 7).ToUpper()}";
-            TextBoxRegisteredOwner.Text = $"User{new Random().Next(1000, 9999)}";
+            TextBoxRegisteredOwner.Text = Guid.NewGuid().ToString().Substring(0, 8).ToUpper();
         }
     }
 }
