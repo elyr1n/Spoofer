@@ -35,6 +35,7 @@
             ButtonSaveSettings = new Button();
             TextBoxRegisteredOwner = new TextBox();
             LabelWindowsVersion = new Label();
+            OffTPMButton = new Button();
             SuspendLayout();
             // 
             // TextBoxHWID
@@ -69,9 +70,9 @@
             // 
             // ButtonGenerate
             // 
-            ButtonGenerate.Location = new Point(12, 158);
+            ButtonGenerate.Location = new Point(12, 191);
             ButtonGenerate.Name = "ButtonGenerate";
-            ButtonGenerate.Size = new Size(360, 23);
+            ButtonGenerate.Size = new Size(360, 26);
             ButtonGenerate.TabIndex = 3;
             ButtonGenerate.Text = "Сгенерировать";
             ButtonGenerate.UseVisualStyleBackColor = true;
@@ -79,9 +80,9 @@
             // 
             // ButtonSaveSettings
             // 
-            ButtonSaveSettings.Location = new Point(12, 187);
+            ButtonSaveSettings.Location = new Point(12, 223);
             ButtonSaveSettings.Name = "ButtonSaveSettings";
-            ButtonSaveSettings.Size = new Size(360, 23);
+            ButtonSaveSettings.Size = new Size(360, 26);
             ButtonSaveSettings.TabIndex = 4;
             ButtonSaveSettings.Text = "Сохранить";
             ButtonSaveSettings.UseVisualStyleBackColor = true;
@@ -102,17 +103,28 @@
             LabelWindowsVersion.AutoSize = true;
             LabelWindowsVersion.BackColor = SystemColors.Control;
             LabelWindowsVersion.ForeColor = SystemColors.AppWorkspace;
-            LabelWindowsVersion.Location = new Point(8, 124);
+            LabelWindowsVersion.Location = new Point(8, 125);
             LabelWindowsVersion.Name = "LabelWindowsVersion";
             LabelWindowsVersion.Size = new Size(0, 15);
             LabelWindowsVersion.TabIndex = 6;
+            // 
+            // OffTPMButton
+            // 
+            OffTPMButton.Location = new Point(12, 159);
+            OffTPMButton.Name = "OffTPMButton";
+            OffTPMButton.Size = new Size(360, 26);
+            OffTPMButton.TabIndex = 7;
+            OffTPMButton.Text = "Выключить TPM";
+            OffTPMButton.UseVisualStyleBackColor = true;
+            OffTPMButton.Click += OffTPMButton_Click;
             // 
             // SpooferForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.Control;
-            ClientSize = new Size(384, 221);
+            ClientSize = new Size(384, 261);
+            Controls.Add(OffTPMButton);
             Controls.Add(LabelWindowsVersion);
             Controls.Add(TextBoxRegisteredOwner);
             Controls.Add(ButtonSaveSettings);
@@ -139,5 +151,6 @@
         private Button ButtonSaveSettings;
         private TextBox TextBoxRegisteredOwner;
         private Label LabelWindowsVersion;
+        private Button OffTPMButton;
     }
 }

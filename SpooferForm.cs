@@ -44,5 +44,22 @@ namespace Spoofer
             TextBoxComputerName.Text = $"DESKTOP-{Guid.NewGuid().ToString().Substring(0, 7).ToUpper()}";
             TextBoxRegisteredOwner.Text = Guid.NewGuid().ToString().Substring(0, 8).ToUpper();
         }
+
+        private void OffTPMButton_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Registry.SetValue(@"HKEY_LOCAL_MACHINE\SYSTEM\Setup\MoSetup", "AllowUpgradesWithUnsupportedTPMOrCPU", 1);
+                Registry.SetValue(@"HKEY_LOCAL_MACHINE\SYSTEM\Setup\LabConfig", "BypassTPMCheck", 1);
+                Registry.SetValue(@"HKEY_LOCAL_MACHINE\SYSTEM\Setup\LabConfig", "BypassSecureBootCheck", 1);
+                Registry.SetValue(@"HKEY_LOCAL_MACHINE\SYSTEM\Setup\LabConfig", "BypassRAMCheck", 1);
+
+                MessageBox.Show("TPM успешно отключён. Перезагрузите компьютер, чтобы изменения вступили в силу.", "Успех", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception error)
+            {
+                MessageBox.Show($"Ошибка при отключении TPM: {error.Message}", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
     }
 }
