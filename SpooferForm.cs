@@ -12,8 +12,8 @@ namespace Spoofer
         {
             InitializeComponent();
 
-            SetWindowDisplayAffinity(this.Handle, 0x00000011);
             this.ShowInTaskbar = false;
+            SetWindowDisplayAffinity(this.Handle, 0x00000011);
 
             GetSystemValues();
         }
