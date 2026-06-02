@@ -1,22 +1,29 @@
 using Microsoft.Win32;
+using System.Runtime.InteropServices;
 
 namespace Spoofer
 {
     public partial class SpooferForm : Form
     {
+        [DllImport("user32.dll")]
+        public static extern bool SetWindowDisplayAffinity(IntPtr HWND, uint dwAffinity);
+
         public SpooferForm()
         {
             InitializeComponent();
-            getSystemValues();
+
+            SetWindowDisplayAffinity(this.Handle, 0x00000011);
+            this.ShowInTaskbar = false;
+
+            GetSystemValues();
         }
 
-        private void getSystemValues()
+        private void GetSystemValues()
         {
             TextBoxHWID.Text = Registry.GetValue(@"HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Cryptography", "MachineGuid", "HWID")?.ToString();
             TextBoxProductID.Text = Registry.GetValue(@"HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion", "ProductId", "Product-ID")?.ToString();
             TextBoxComputerName.Text = Environment.MachineName;
-            TextBoxRegisteredOwner.Text = Registry.GetValue(@"HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion", "RegisteredOwner", "Registered Owner")?.ToString();
-            LabelWindowsVersion.Text = Environment.OSVersion.ToString();
+            TextBoxRegisteredOwner.Text = Environment.UserName;
         }
 
         private void ButtonSaveSettings_Click(object sender, EventArgs e)
